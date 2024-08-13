@@ -1,0 +1,21 @@
+services:
+  db:
+    container_name: ikaContBasicNlayer
+    image: postgres
+    environment:
+      POSTGRES_USER: irakli
+      POSTGRES_PASSWORD: pass
+      PGDATA: /data/irakli
+    volumes:
+      - db:/data/irakli
+    ports:
+      - "5332:5432"
+    networks:
+      - db
+    restart: unless-stopped
+
+networks:
+  db:
+    driver: bridge
+volumes:
+  db:
